@@ -76,8 +76,8 @@ function Nav() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "border-b border-border/60 bg-background/90 py-3 backdrop-blur-md"
-          : "border-b border-transparent py-6"
+          ? "border-b border-border/60 bg-background/90 py-3 text-foreground backdrop-blur-md"
+          : "border-b border-transparent py-6 text-paper"
       }`}
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 md:px-10">
@@ -95,12 +95,22 @@ function Nav() {
             <a
               key={n.href}
               href={n.href}
-              className="link-underline text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className={`link-underline text-sm transition-colors ${
+                scrolled
+                  ? "text-muted-foreground hover:text-foreground"
+                  : "text-paper/65 hover:text-paper"
+              }`}
             >
               {n.label}
             </a>
           ))}
-          <OrderLink className="eyebrow border border-foreground px-5 py-3 transition-colors duration-300 hover:bg-foreground hover:text-background">
+          <OrderLink
+            className={`eyebrow border px-5 py-3 transition-colors duration-300 ${
+              scrolled
+                ? "border-foreground hover:bg-foreground hover:text-background"
+                : "border-paper/45 hover:bg-paper hover:text-ink"
+            }`}
+          >
             Order Now
           </OrderLink>
         </nav>
